@@ -21,8 +21,14 @@ if [ $versioncontinue == 'y' ]
     echo 'Build version $version contains'
     ls
     cd ..
-    git add -a
-    git commit
+    echo 'make git update?'
+    read yn
+    if [ $yn == 'y']
+    	then git add .
+	     git commit -m 'Updating to $version'
+	     git push
+	else echo 'OK, no version control for you, living dangerously'
+    fi
   else
     echo 'Come back when you grow up, kid'
 fi
